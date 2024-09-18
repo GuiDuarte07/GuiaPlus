@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GuiaPlus.Application.DTOs.Cliente;
+using GuiaPlus.Application.DTOs.Servico;
 using GuiaPlus.Domain.Entities;
 
 namespace GuiaPlus.Application.Mapping
@@ -18,6 +19,8 @@ namespace GuiaPlus.Application.Mapping
 
 
             // Maps da entidade Servico
+            CreateMap<Servico, ServicoResponse>();
+            CreateMap<ServicoCreateRequest, Servico>();
 
             // Maps da entidade Guia
         }
