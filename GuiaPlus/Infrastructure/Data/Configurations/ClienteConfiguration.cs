@@ -13,6 +13,7 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
         builder.Property(c => c.CPF_CNPJ)
             .IsRequired()
             .HasMaxLength(14);
+            
 
         builder.Property(c => c.NomeCompleto)
             .IsRequired()

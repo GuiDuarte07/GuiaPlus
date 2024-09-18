@@ -1,4 +1,6 @@
-using GuiaPlus.Domain.Entities;
+using GuiaPlus.Application.Mapping;
+using GuiaPlus.Application.Services;
+using GuiaPlus.Domain.Interfaces.Services;
 using GuiaPlus.Infrastructure.Data.Context;
 using GuiaPlus.Infrastructure.Data.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -15,7 +17,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add services to the container.
 builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAuthorization();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+// Infrastrucute Services
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
