@@ -9,7 +9,7 @@ services:
     container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=12345
+      - SA_PASSWORD=MyPassword123
     ports:
       - "1433:1433"
     volumes:

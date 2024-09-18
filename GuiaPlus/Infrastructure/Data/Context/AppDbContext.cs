@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GuiaPlus.Domain.Entities;
 
-namespace GuiaPlus.Infrastructure.Data.AppDbContext;
+namespace GuiaPlus.Infrastructure.Data.Context;
 
 public class AppDbContext : DbContext
 {

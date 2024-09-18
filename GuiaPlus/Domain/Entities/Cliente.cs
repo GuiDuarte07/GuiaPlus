@@ -9,4 +9,6 @@ public class Cliente
     public string Email { get; set; }
     public string Telefone { get; set; }
     public StatusCliente Status { get; set; }
+
+    public IEnumerable<ClienteEndereco> ClienteEnderecos { get; set; }
 }

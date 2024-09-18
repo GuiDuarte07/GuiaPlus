@@ -26,5 +26,9 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
 
         builder.Property(c => c.Status)
             .IsRequired();
+
+        builder.HasMany(c => c.ClienteEnderecos)
+            .WithOne(ce => ce.Cliente)
+            .HasForeignKey(ce => ce.ClienteId);
     }
 }

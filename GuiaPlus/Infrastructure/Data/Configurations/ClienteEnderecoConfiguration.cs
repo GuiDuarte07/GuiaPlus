@@ -7,10 +7,34 @@ public class ClienteEnderecoConfiguration : IEntityTypeConfiguration<ClienteEnde
 {
     public void Configure(EntityTypeBuilder<ClienteEndereco> builder)
     {
-        builder.HasKey(e => e.Id);
 
-        builder.HasOne(e => e.Cliente)
-            .WithMany()
-            .HasForeignKey(e => e.ClienteId);
+        builder.HasKey(ce => ce.Id);
+
+        builder.Property(ce => ce.CEP)
+            .IsRequired()
+            .HasMaxLength(8);
+
+        builder.Property(ce => ce.Logradouro)
+            .IsRequired()
+            .HasMaxLength(255);
+
+        builder.Property(ce => ce.Bairro)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(ce => ce.Cidade)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(ce => ce.Complemento)
+            .HasMaxLength(255);
+
+        builder.Property(ce => ce.Numero)
+            .IsRequired()
+            .HasMaxLength(20);
+
+        builder.HasOne(ce => ce.Cliente)
+            .WithMany(c => c.ClienteEnderecos)
+            .HasForeignKey(ce => ce.ClienteId);
     }
 }

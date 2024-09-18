@@ -1,4 +1,5 @@
-using GuiaPlus.Infrastructure.Data.AppDbContext;
+using GuiaPlus.Infrastructure.Data.Context;
+using GuiaPlus.Infrastructure.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
