@@ -9,7 +9,7 @@ public class Guia
     public int ClienteEnderecoId { get; set; }
     public string NumeroGuia { get; set; }
     public StatusGuia Status { get; set; }
-    public DateTime DataHoraRegistro { get; set; } = DateTime.Now;
+    public DateTime DataHoraRegistro { get; set; }
     public DateTime? DataHoraIniciouColeta { get; set; }
     public DateTime? DataHoraConfirmouRetirada { get; set; }
 

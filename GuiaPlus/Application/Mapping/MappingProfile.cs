@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GuiaPlus.Application.DTOs.Cliente;
+using GuiaPlus.Application.DTOs.Guia;
 using GuiaPlus.Application.DTOs.Servico;
 using GuiaPlus.Domain.Entities;
 
@@ -23,6 +24,13 @@ namespace GuiaPlus.Application.Mapping
             CreateMap<ServicoCreateRequest, Servico>();
 
             // Maps da entidade Guia
+            CreateMap<GuiaCreateRequest, Guia>();
+            CreateMap<GuiaUpdateStatusRequest, Guia>();
+            CreateMap<GuiaUpdateEnderecoRequest, Guia>();
+            CreateMap<Guia, GuiaResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Servico, opt => opt.MapFrom(src => src.Servico))
+                .ForMember(dest => dest.ClienteEndereco, opt => opt.MapFrom(src => src.ClienteEndereco));
         }
     }
 }

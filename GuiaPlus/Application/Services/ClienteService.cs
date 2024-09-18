@@ -25,15 +25,17 @@ namespace GuiaPlus.Application.Services
 
             try
             {
-                _context.Clientes.Add(cliente);
+                var createdUser = _context.Clientes.Add(cliente);
                 await _context.SaveChangesAsync();
+
+                return _mapper.Map<ClienteDetailsResponse>(createdUser.Entity);
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Ocorreu um erro ao criar o endereço.", ex);
             }
 
-            return _mapper.Map<ClienteDetailsResponse>(cliente);
+           
         }
 
         public async Task<ClienteEnderecoResponse> CreateEnderecoAsync(ClienteEnderecoCreateRequest clienteEnderecoCreateRequest)
@@ -48,15 +50,15 @@ namespace GuiaPlus.Application.Services
 
             try
             {
-                _context.ClienteEnderecos.Add(endereco);
+                var createdEndereco = _context.ClienteEnderecos.Add(endereco);
                 await _context.SaveChangesAsync();
+
+                return _mapper.Map<ClienteEnderecoResponse>(createdEndereco.Entity);
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Ocorreu um erro ao criar o endereço.", ex);
             }
-
-            return _mapper.Map<ClienteEnderecoResponse>(endereco);
         }
 
         public async Task<IEnumerable<ClienteSummaryResponse>> GetAllClientesAsync()

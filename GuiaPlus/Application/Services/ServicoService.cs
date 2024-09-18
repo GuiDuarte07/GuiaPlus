@@ -19,13 +19,15 @@ namespace GuiaPlus.Application.Services
             _mapper = mapper;
         }
 
-        public async Task CreateServicoAsync(ServicoCreateRequest request)
+        public async Task<ServicoResponse> CreateServicoAsync(ServicoCreateRequest request)
         {
             try
             {
                 var servico = _mapper.Map<Servico>(request);
-                _context.Servicos.Add(servico);
+                var createdServico = _context.Servicos.Add(servico);
                 await _context.SaveChangesAsync();
+
+                return _mapper.Map<ServicoResponse>(createdServico.Entity);
             }
             catch (Exception ex)
             {

@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Infrastrucute Services
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IServicoService, ServicoService>();
+builder.Services.AddScoped<IGuiaService, GuiaService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
