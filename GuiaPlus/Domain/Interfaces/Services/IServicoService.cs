@@ -4,7 +4,7 @@ namespace GuiaPlus.Domain.Interfaces.Services
 {
     public interface IServicoService
     {
-        Task<ServicoResponse> CreateServicoAsync(ServicoCreateRequest request);
-        Task<IEnumerable<ServicoResponse>> GetAllServicosAsync();
+        public Task<ServicoResponse> CreateServicoAsync(ServicoCreateRequest request);
+        public Task<IEnumerable<ServicoResponse>> GetAllServicosAsync();
     }
 }

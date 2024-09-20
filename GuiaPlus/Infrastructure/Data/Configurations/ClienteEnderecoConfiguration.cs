@@ -33,6 +33,12 @@ public class ClienteEnderecoConfiguration : IEntityTypeConfiguration<ClienteEnde
             .IsRequired()
             .HasMaxLength(20);
 
+        builder.Property(ce => ce.Latitude)
+            .IsRequired();
+
+        builder.Property(ce => ce.Longitude)
+           .IsRequired();
+
         builder.HasOne(ce => ce.Cliente)
             .WithMany(c => c.ClienteEnderecos)
             .HasForeignKey(ce => ce.ClienteId);

@@ -8,6 +8,5 @@ namespace GuiaPlus.Application.DTOs.Cliente
         public string NomeCompleto { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public StatusCliente Status { get; set; } = StatusCliente.ATIVO;
     }
 }

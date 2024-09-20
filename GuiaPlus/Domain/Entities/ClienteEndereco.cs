@@ -10,6 +10,8 @@ public class ClienteEndereco
     public string Cidade { get; set; }
     public string Complemento { get; set; }
     public string Numero { get; set; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
 
     // Navegação para Cliente
     public Cliente Cliente { get; set; }

@@ -21,8 +21,8 @@ namespace GuiaPlus.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await _servicoService.CreateServicoAsync(request);
-            return NoContent();
+            var response = await _servicoService.CreateServicoAsync(request);
+            return Created("", response);
         }
 
         [HttpGet]

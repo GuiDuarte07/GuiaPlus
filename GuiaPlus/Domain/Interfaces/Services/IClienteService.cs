@@ -4,9 +4,10 @@ namespace GuiaPlus.Domain.Interfaces.Services
 {
     public interface IClienteService
     {
-        Task<ClienteDetailsResponse> CreateClienteAsync(ClienteCreateRequest clienteCreateRequest);
-        Task<ClienteEnderecoResponse> CreateEnderecoAsync(ClienteEnderecoCreateRequest clienteEnderecoCreateRequest);
-        Task<ClienteDetailsResponse?> GetClienteByIdAsync(int id);
-        Task<IEnumerable<ClienteSummaryResponse>> GetAllClientesAsync();
+        public Task<ClienteDetailsResponse> CreateClienteAsync(ClienteCreateRequest clienteCreateRequest);
+        public Task<ClienteEnderecoResponse> CreateEnderecoAsync(ClienteEnderecoCreateRequest clienteEnderecoCreateRequest);
+        public Task<ClienteDetailsResponse?> GetClienteByCpfCnpjAsync(string cpfCnpj);
+        public Task<IEnumerable<ClienteSummaryResponse>> GetAllClientesAsync();
+        public Task<ClienteEnderecoResponse> UpdateEnderecoPosition(EnderecoUpdatePositionRequest enderecoUpdatePositionRequest);
     }
 }

@@ -20,7 +20,7 @@ namespace GuiaPlus.Api.Controllers
         public async Task<IActionResult> CreateCliente([FromBody] ClienteCreateRequest clienteDto)
         {
             var cliente = await _clienteService.CreateClienteAsync(clienteDto);
-            return CreatedAtAction(nameof(GetClienteById), new { id = cliente.Id }, cliente);
+            return Created($"/{cliente.Id}", cliente);
         }
 
         [HttpPost]
@@ -31,10 +31,10 @@ namespace GuiaPlus.Api.Controllers
             return Created("", endereco);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetClienteById(int id)
+        [HttpGet("{cpfCnpj}")]
+        public async Task<IActionResult> GetClienteByCpfCnpj(string cpfCnpj)
         {
-            var cliente = await _clienteService.GetClienteByIdAsync(id);
+            var cliente = await _clienteService.GetClienteByCpfCnpjAsync(cpfCnpj);
             if (cliente == null)
             {
                 return NotFound();
@@ -47,6 +47,14 @@ namespace GuiaPlus.Api.Controllers
         {
             var clientes = await _clienteService.GetAllClientesAsync();
             return Ok(clientes);
+        }
+
+        [HttpPut("position")]
+        public async Task<IActionResult> UpdateEnderecoPosition(EnderecoUpdatePositionRequest enderecoUpdatePositionRequest)
+        {
+            var endereco = await _clienteService.UpdateEnderecoPosition(enderecoUpdatePositionRequest);
+
+            return Ok(endereco);
         }
     }
 

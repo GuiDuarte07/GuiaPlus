@@ -1,5 +1,6 @@
 using GuiaPlus.Application.Mapping;
 using GuiaPlus.Application.Services;
+using GuiaPlus.Domain.Entities;
 using GuiaPlus.Domain.Interfaces.Services;
 using GuiaPlus.Infrastructure.Data.Context;
 using GuiaPlus.Infrastructure.Data.Extensions;
@@ -29,7 +30,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:5173")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -39,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapGroup("/identity").MapIdentityApi<IdentityUser>();
 
