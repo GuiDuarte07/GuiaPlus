@@ -60,13 +60,20 @@ namespace GuiaPlus.Application.Services
             
         }
 
-        public async Task<IEnumerable<GuiaResponse>> GetAllGuiasAsync()
+        public async Task<IEnumerable<GuiaResponse>> GetAllGuiasAsync(bool filterFinished)
         {
             try
             {
-                return await _context.Guias
-                .ProjectTo<GuiaResponse>(_mapper.ConfigurationProvider)
-                .ToListAsync();
+                var query = _context.Guias.AsQueryable();
+
+                if (filterFinished)
+                {
+                    query = query.Where(g => g.Status != StatusGuia.CONFIRMOU_RETIRADA);
+                }
+
+                return await query
+                    .ProjectTo<GuiaResponse>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {

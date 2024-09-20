@@ -33,11 +33,11 @@ namespace GuiaPlus.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllGuias()
+        public async Task<IActionResult> GetAllGuias([FromQuery] bool filterFinished = true)
         {
             try
             {
-                var guias = await _guiaService.GetAllGuiasAsync();
+                var guias = await _guiaService.GetAllGuiasAsync(filterFinished);
                 return Ok(guias);
             }
             catch (Exception ex)
